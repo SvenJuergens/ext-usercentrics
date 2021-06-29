@@ -6,5 +6,9 @@ plugin {
         settingsId =
         # cat=usercentrics; type=string; label=language iso code
         language = en
+        # cat=usercentrics; type=int; label=Usercentrics Version
+        useVersion = 1
+        # cat=usercentrics; type=options[Modern=modern, Legacy=legacy]; label=Script for modern browsers or Script for legacy browsers Support
+        version2Type = modern
     }
 }

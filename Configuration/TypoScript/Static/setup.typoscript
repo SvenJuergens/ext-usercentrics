@@ -1,4 +1,6 @@
 plugin.tx_usercentrics {
+    useVersion = {$plugin.tx_usercentrics.useVersion}
+    version2Type = {$plugin.tx_usercentrics.version2Type}
     settingsId = {$plugin.tx_usercentrics.settingsId}
     language = {$plugin.tx_usercentrics.language}
 }

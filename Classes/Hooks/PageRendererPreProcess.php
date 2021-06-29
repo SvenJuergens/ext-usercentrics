@@ -77,11 +77,26 @@ class PageRendererPreProcess
 
     protected function addUsercentricsScript(array $config): void
     {
-        $this->assetCollector->addJavaScript('usercentrics', 'https://app.usercentrics.eu/latest/main.js', [
-            'type' => 'application/javascript',
-            'id' => $config['settingsId'],
-            'language' => $config['language'],
-        ]);
+        if ((int)$config['useVersion'] === 1) {
+            $this->assetCollector->addJavaScript('usercentrics', 'https://app.usercentrics.eu/latest/main.js', [
+                'type' => 'application/javascript',
+                'id' => $config['settingsId'],
+                'language' => $config['language'],
+            ]);
+        }
+        if ((int)$config['useVersion'] === 2) {
+            $usercentricsScript = 'https://app.usercentrics.eu/browser-ui/latest/bundle.js';
+
+            if ((string)$config['version2Type'] === 'legacy') {
+                $usercentricsScript = 'https://app.usercentrics.eu/browser-ui/latest/bundle_legacy.js';
+            }
+            $this->assetCollector->addJavaScript('usercentrics', $usercentricsScript, [
+                'data-settings-id' => $config['settingsId'],
+                'id' => 'usercentrics-cmp',
+                'language' => $config['language'],
+                'async' => 'async'
+            ]);
+        }
     }
 
     protected function convertPriorityToBoolean(array $options): array
