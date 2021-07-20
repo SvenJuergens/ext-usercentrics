@@ -97,6 +97,15 @@ class PageRendererPreProcess
                 'async' => 'async'
             ]);
         }
+        if ((int)$config['useVersion'] === 3) {
+            $usercentricsScript = 'https://app.usercentrics.eu/browser-ui/latest/loader.js';
+
+            $this->assetCollector->addJavaScript('usercentrics', $usercentricsScript, [
+                'data-settings-id' => $config['settingsId'],
+                'id' => 'usercentrics-cmp',
+                'async' => 'async'
+            ]);
+        }
     }
 
     protected function convertPriorityToBoolean(array $options): array
